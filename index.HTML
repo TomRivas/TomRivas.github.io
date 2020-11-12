@@ -6,60 +6,6 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-  html,
-  body,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: "Roboto", sans-serif
-  }
-</style>
-
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    * {
-      box-sizing: border-box
-    }
-
-    /* Set height of body and the document to 100% */
-    body,
-    html {
-      height: 100%;
-      margin: 0;
-      font-family: Arial;
-    }
-
-    /* Style tab links */
-    .tablink {
-      background-color: #555;
-      color: white;
-      float: left;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      padding: 14px 16px;
-      font-size: 17px;
-      width: 25%;
-    }
-
-    .tablink:hover {
-      background-color: #777;
-    }
-
-    /* Style the tab content (and add height:100% for full page content) */
-    .tabcontent {
-      color: white;
-      display: none;
-      padding: 100px 20px;
-      height: 100%;
-    }
-  </style>
-</head>
 
 <body class="w3-light-grey">
 
@@ -83,9 +29,9 @@
             <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Graduate Student</p>
             <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Boulder, CO</p>
             <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>thomas.rivas<span style="display: none;">REMOVE</span>@colorado.edu</p>
-<p><i class="fa fa-twitter w3-hover-opacity"></i></p>
-    <p><i class="fa fa-linkedin w3-hover-opacity"></i></p>
-    <p><i class="fa w3-hover-opacity"><a href="https://scholar.google.com/citations?hl=en&authuser=1&user=-iVQ8pQAAAAJ"><img height="20px" width="20px" src="images/1024px-Google_Scholar_logo.svg_white.png"></img></a></i></p>
+            <p><a target="_blank" href="https://twitter.com/ThomasERivas"><i class="fa fa-twitter fa-fw w3-margin-right w3-large w3-text-teal w3-hover-opacity"></i>Twitter</a></p>
+            <p><a target="_blank" href="https://www.linkedin.com/in/tomrivas/"><i class="fa fa-linkedin fa-fw w3-margin-right w3-large w3-text-teal w3-hover-opacity"></i>LinkedIn</a></p>
+            <p><i class="fa fa-fw w3-margin-right w3-large w3-text-teal w3-hover-opacity"><a target="_blank" href="https://scholar.google.com/citations?hl=en&authuser=1&user=-iVQ8pQAAAAJ"><img height="20px" width="20px" src="images/1024px-Google_Scholar_logo.svg.png"></img></i>Google Scholar</a></p>
             <!--<hr>
           <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
           <p>English</p>
@@ -112,15 +58,19 @@
         <body>
 
           <button class="tablink" onclick="openPage('About', this, '#009688')" id="defaultOpen">About</button>
-          <button class="tablink" onclick="openPage('Education', this, '#009688')">Education</button>
-          <button class="tablink" onclick="openPage('Teaching Experience', this, '#009688')">Teaching Experience</button>
+          <button class="tablink" onclick="openPage('Education', this, '#009688')">Education and Awards</button>
+          <button class="tablink" onclick="openPage('Research', this, '#009688')">Research</button>
           <button class="tablink" onclick="openPage('Extras', this, '#009688')">Extras</button>
 
           <div id="About" class="tabcontent">
             <div class="w3-container w3-card w3-white w3-margin-bottom">
+            <div class="w3-container">
 	    <h2 class="w3-text-teal w3-padding-14">About Me</h2>
-            <p>Thanks for checking out my website! I'm a senior graduate student in the Goodrich and Kugel lab at CU Boulder. I joined the lab in May of 2016 and have been working on two main projects: <ol><li>Understanding Pol II transcriptional regulation upon HSV-1 infection</li><li>Investigating the lifecycle and metabolism of B2 ncRNA</li></ol>
-            
+            <p>I'm a senior graduate student in the Goodrich and Kugel lab at CU Boulder looking for a postdoctoral position within academia or industry. I am interested in applying super-resolution microscopy or bioinformatics approaches to answer mechanistic questions about transcription and/or RNA biology, in particular circular RNAs. I joined the lab in May of 2016 and have been working on two main projects: <ol><li>Understanding Pol II transcriptional regulation upon HSV-1 infection</li><li>Investigating the lifecycle and metabolism of B2 ncRNA</li></ol>
+Throughout graduate school, I've been heavily involved in the SCR training grant program, the Colorado RNA Salon, and the CU Green Labs program.<br>
+<br>
+Outside of the lab, I enjoy reading, attending concerts, the occassional hike, and video games.</p>
+            </div>
             </div>
           </div>
 
@@ -180,7 +130,7 @@
             </div>
           </div>
 
-          <div id="Teaching Experience" class="tabcontent">
+          <div id="Research" class="tabcontent">
             <div class="w3-container w3-card w3-white w3-margin-bottom">
               <div class="w3-container">
                 <h5 class="w3-opacity"><b>Front End Developer / w3schools.com</b></h5>
