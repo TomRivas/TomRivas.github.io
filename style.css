@@ -163,6 +163,10 @@
   background-color: #009688;
 }*/
 
+.active {
+  background-color: #009688;
+}
+
 .collapsible:after {
   content: '\002B';
   color: white;
