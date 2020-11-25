@@ -1,0 +1,70 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r message=FALSE, warning=FALSE}
+library(Gviz)
+library(TxDb.Hsapiens.UCSC.hg19.knownGene)
+library(rtracklayer)
+txdb <- TxDb.Hsapiens.UCSC.hg19.knownGene
+```
+
+#Plotting
+I will try making DataTracks with my ChIP-seq data: need wig, bigWig, bedGraph, or bam
+```{r}
+filter <- list(tx_name="uc003xcm.1") #choose the gene by UCSC ID.
+GR <- transcripts(txdb, filter=filter) #get the genomic coords of the gene
+
+#tweak coords if needed
+start(GR) <- 22545172
+end(GR) <- 22550993
+
+DS <- promoters(txdb, filter=filter, upstream=1000, downstream = (width(GR)+1000)) #adds 1000 bases upstream and downstream of the gene
+
+#create gene region track (gene arrow) for just the gene
+grTrack <- GeneRegionTrack(c(GR), name="EGR3", symbol="EGR3", fill = "#222222", col = "#222222", 
+                           arrowHeadMaxWidth=10, stackHeight=.25)
+
+#Add a scale bar
+genomeAxis <- GenomeAxisTrack(name="MyAxis", col="black", labelPos = "above") 
+
+#load in files limited to gene coords + extra density on both sides
+bwFile.mock <- import.bw("C:/Users/Tom/Documents/bigwig/CombinedMock_Hg19.ucsc.bigWig", selection = BigWigSelection(c(DS)))
+bwFile.wt <- import.bw("C:/Users/Tom/Documents/bigwig/CombinedWT_Hg19.ucsc.bigWig", selection = BigWigSelection(c(DS)))
+bwFile.n12 <- import.bw("C:/Users/Tom/Documents/bigwig/CombineddICP4_Hg19.ucsc.bigWig", selection = BigWigSelection(c(DS)))
+
+#create data tracks of the bw files and some settings adjustments
+dTrack.mock <- DataTrack(range = bwFile.mock, genome = "hg19", type = "polygon", fill.mountain=c("#222222","#222222"),col.mountain="#222222",
+                     name = "Mock", window = -1, ylim=c(0,125), yTicksAt = c(125), col.baseline="black",
+                     chromosome = "chr8")
+dTrack.wt <- DataTrack(range = bwFile.wt, genome = "hg19", type = "polygon", fill.mountain=c("#F11737","#F11737"),col.mountain="#F11737", 
+                     name = "WT", window = -1, ylim=c(0,125), yTicksAt = c(125), col.baseline="black",
+                     chromosome = "chr8")
+dTrack.n12 <- DataTrack(range = bwFile.n12, genome = "hg19", type = "polygon", fill.mountain=c("#3117F1","#3117F1"),col.mountain="#3117F1", 
+                     name = "n12", window = -1, ylim=c(0,125), yTicksAt = c(125), col.baseline="black",
+                     chromosome = "chr8")
+
+#Change ylim and yTicksat for different genes
+#window = -1 removes the margin between plot and y-axis
+
+
+#plot!
+plotTracks(list(genomeAxis,dTrack.mock, dTrack.wt, dTrack.n12, grTrack), shape="arrow", transcriptAnnotation = "symbol", 
+           background.title="transparent",col.axis="black", scale=1000, 
+           innerMargin=-1, margin=0, title.width=0.5)
+
+#in powerpoint, relabel y-axis and remake the scale bar and gene arrow.
+```
+
+#Run this when plot is finalized
+```{r}
+tiff('EGR3_1.5.tiff',height=1.5, width=1.5, units="in", res = 600)
+plotTracks(list(genomeAxis,dTrack.mock, dTrack.wt, dTrack.n12, grTrack), shape="arrow", transcriptAnnotation = "symbol", 
+           background.title="transparent",col.axis="black", scale=1000, 
+           innerMargin=-1, margin=0, title.width=0.5)
+dev.off()
+```
+
+  
+  
